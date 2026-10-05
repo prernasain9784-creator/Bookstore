@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Independent bookstore events page">
+
+    <title>Independent Bookstore | Events</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            <span class="logo-icon">📚</span>
+
+            <div>
+                <h2>Independent Bookstore</h2>
+                <span>Books • Events • Community</span>
+            </div>
+        </div>
+
+        <button id="addBtn" class="primary-btn">
+            + Add Event
+        </button>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="small-title">
+                    OUR COMMUNITY
+                </span>
+
+                <h1>
+                    Bookstore<br>
+                    <span>Events</span>
+                </h1>
+
+                <p>
+                    Discover. Learn. Connect.
+                </p>
+
+                <small>
+                    Join our upcoming events and become a part
+                    of our growing book community.
+                </small>
+
+            </div>
+
+            <div class="hero-image-box">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1000"
+                    alt="Bookshelves inside a bookstore">
+
+            </div>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="controls">
+
+            <div class="search-box">
+
+                <label for="search">
+                    Search events
+                </label>
+
+                <div class="input-wrap">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="search"
+                        id="search"
+                        placeholder="Search by event or location"
+                        autocomplete="off">
+
+                </div>
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <label for="filter">
+                    Show
+                </label>
+
+                <select id="filter">
+
+                    <option value="all">
+                        All Events
+                    </option>
+
+                    <option value="upcoming">
+                        Upcoming Events
+                    </option>
+
+                    <option value="past">
+                        Past Events
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- Loading -->
+        <div
+            id="loading"
+            class="loading hidden"
+            role="status"
+            aria-live="polite">
+
+            <span class="spinner"></span>
+
+            <span>
+                Loading events...
+            </span>
+
+        </div>
+
+
+        <!-- Error -->
+        <div
+            id="error"
+            class="error"
+            role="alert"
+            aria-live="assertive">
+        </div>
+
+
+        <!-- Events -->
+        <section
+            id="events"
+            class="events"
+            aria-label="Bookstore events">
+        </section>
+
+    </main>
+
+
+    <!-- Add Event Modal -->
+    <div
+        id="modal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle">
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="small-title">
+                        BOOKSTORE EVENTS
+                    </span>
+
+                    <h2 id="modalTitle">
+                        Add New Event
+                    </h2>
+                </div>
+
+                <button
+                    id="closeBtn"
+                    class="close-btn"
+                    type="button"
+                    aria-label="Close add event form">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <form id="eventForm">
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Event Title *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Author Meet & Greet"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required>
+
+                </div>
+
+
+                <div class="two-columns">
+
+                    <div class="form-group">
+
+                        <label for="start">
+                            Start Time *
+                        </label>
+
+                        <input
+                            type="time"
+                            id="start"
+                            name="start"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="end">
+                            End Time *
+                        </label>
+
+                        <input
+                            type="time"
+                            id="end"
+                            name="end"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="e.g. Main Bookstore"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        placeholder="Tell people about this event...">
+                    </textarea>
+
+                </div>
+
+
+                <div
+                    id="formError"
+                    class="form-error"
+                    role="alert">
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="secondary-btn"
+                        onclick="document.getElementById('closeBtn').click()">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveBtn"
+                        class="primary-btn">
+
+                        Save Event
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
